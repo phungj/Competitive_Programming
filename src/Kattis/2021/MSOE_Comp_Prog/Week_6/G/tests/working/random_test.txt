@@ -1,0 +1,8 @@
+12 6 6 5
+A B C D E F
+G H I J K L
+3 A H I
+3 C G J
+2 D I
+3 E I J
+2 F L

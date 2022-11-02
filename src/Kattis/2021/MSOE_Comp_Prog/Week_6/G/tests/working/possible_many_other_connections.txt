@@ -1,0 +1,5 @@
+19 1 1 2
+A
+B
+10 A C D E F G H I J K
+10 B L M N O P Q R S K
