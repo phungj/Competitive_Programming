@@ -12,10 +12,17 @@
 
 
 def contiguous_sum(array, k):
-    for i in range(0, len(array)):
-        for j in range(len(array) - i):
-            if sum(array[j:j + i + 1]) == k:
-                return True
+    num_set = {0}
+
+    curr_sum = 0
+
+    for i in range(len(array)):
+        curr_sum += array[i]
+
+        if curr_sum - k in num_set:
+            return True
+        else:
+            num_set.add(curr_sum)
 
     return False
 
@@ -25,5 +32,12 @@ if __name__ == '__main__':
     print(contiguous_sum([1, 2, 3, 4, 8], 0))
 
     print(contiguous_sum([1], 1))
+    print(contiguous_sum([-1], -1))
+    print(contiguous_sum([1], -1))
 
     print(contiguous_sum([1, -2, 1], 0))
+
+    print(contiguous_sum([0], 0))
+    print(contiguous_sum([0, 1, -1], 0))
+
+    print(contiguous_sum([1, -1, 2], 2))
