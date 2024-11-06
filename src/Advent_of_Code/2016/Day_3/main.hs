@@ -5,6 +5,8 @@ isValidTriangle :: [Int] -> Bool
 isValidTriangle [a, b, c] = (a + b) > c
 
 -- Part 2
+
+-- Taken from https://stackoverflow.com/a/2028218
 every :: Int -> [a] -> [a]
 
 every n xs = case drop (n-1) xs of
