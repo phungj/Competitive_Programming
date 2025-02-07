@@ -11,15 +11,14 @@ findMinimumUnblockedIP _ = -1
 
 -- Part 2
 
-mergeRanges :: [[Int]] -> [[Int]] -> [[Int]]
+mergeRanges :: [[Int]] -> [[Int]]
 
-mergeRanges ([low1, high1]:[low2, high2]:rest) ips
-    | high1 + 1 >= low2 && high1 > high2 = mergeRanges ([low1, high1]:rest) ips
-    | high1 + 1 >= low2 = mergeRanges ([low1, high2]:rest) ips
-    | otherwise = [low1, high1]:ips ++ mergeRanges ([low2, high2]:rest) ips
+mergeRanges ([low1, high1]:[low2, high2]:rest)
+    | high1 >= low2 && high1 > high2 = mergeRanges ([low1, high1]:rest)
+    | high1 >= low2 = mergeRanges ([low1, high2]:rest)
+    | otherwise = [low1, high1]:mergeRanges ([low2, high2]:rest)
 
-mergeRanges ([low, high]:rest) ips = [low, high]:ips
-mergeRanges _ ips = ips
+mergeRanges ([low, high]:rest) = [[low, high]]
 
 countBlockedIPs :: [[Int]] -> Int
 
