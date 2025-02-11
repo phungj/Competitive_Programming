@@ -14,8 +14,8 @@ findMinimumUnblockedIP _ = -1
 mergeRanges :: [[Int]] -> [[Int]]
 
 mergeRanges ([low1, high1]:[low2, high2]:rest)
-    | high1 >= low2 && high1 > high2 = mergeRanges ([low1, high1]:rest)
-    | high1 >= low2 = mergeRanges ([low1, high2]:rest)
+    | high1 + 1 >= low2 && high1 > high2 = mergeRanges ([low1, high1]:rest)
+    | high1 + 1 >= low2 = mergeRanges ([low1, high2]:rest)
     | otherwise = [low1, high1]:mergeRanges ([low2, high2]:rest)
 
 mergeRanges ([low, high]:rest) = [[low, high]]
